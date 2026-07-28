@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>ChatLocal</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="app" data-username="{{ username }}">
+
+    <aside class="sidebar">
+      <div class="me">
+        <div class="avatar-wrap" id="my-status-toggle">
+          <div class="avatar">{{ username[0]|upper }}</div>
+          <span id="my-status-dot" class="status-dot online"></span>
+        </div>
+        <span>{{ username }}</span>
+        <a id="admin-link" class="logout hidden" href="{{ url_for('admin_page') }}" title="Panneau admin">🛠️</a>
+        <a class="logout" href="{{ url_for('logout') }}" title="Déconnexion">⏻</a>
+      </div>
+
+      <div id="status-menu" class="status-menu hidden">
+        <div class="status-option" data-status="online"><span class="status-dot online"></span> En ligne</div>
+        <div class="status-option" data-status="afk"><span class="status-dot afk"></span> Absent (AFK)</div>
+        <div class="status-option" data-status="dnd"><span class="status-dot dnd"></span> Ne pas déranger</div>
+        <div class="status-option" data-status="offline"><span class="status-dot offline"></span> Hors ligne</div>
+      </div>
+
+      <div class="add-friend">
+        <input id="friend-input" type="text" placeholder="Ajouter un ami (pseudo)">
+        <button id="add-friend-btn">+</button>
+      </div>
+      <p id="add-friend-msg" class="small-msg"></p>
+
+      <div class="section-title">Demandes reçues</div>
+      <ul id="requests-list" class="list"></ul>
+
+      <div class="section-title">Messages</div>
+      <ul id="dms-list" class="list"></ul>
+
+      <div class="section-title">Amis</div>
+      <ul id="friends-list" class="list"></ul>
+    </aside>
+
+    <main class="chat-area">
+      <div id="no-chat" class="no-chat">Sélectionne un ami pour discuter 👈</div>
+
+      <div id="chat-window" class="chat-window hidden">
+        <div class="chat-header">
+          <span id="chat-with"></span>
+        </div>
+        <div id="messages" class="messages"></div>
+        <div class="composer">
+          <button id="file-btn" title="Envoyer un fichier">📎</button>
+          <input type="file" id="file-input" hidden>
+          <button id="voice-btn" title="Message vocal">🎤</button>
+          <input id="text-input" type="text" placeholder="Écris un message...">
+          <button id="send-btn">Envoyer</button>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="{{ url_for('static', filename='chat.js') }}"></script>
+</body>
+</html>
