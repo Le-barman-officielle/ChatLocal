@@ -1,0 +1,38 @@
+<!--
+FORMATTING:
+• (!line) - new line
+• (!bold/TEXT) - bold text
+• (!underline/TEXT) - underlined text
+• (!italic/text) - italic text
+• (!color/#HEX/TEXT) - colored text
+• (!emoji/EMOJI.png) - emoji
+• (!size/XXpx/TEXT) - text size
+• (!youtube/VIDEO_URL) - youtube video
+• (!button/#HEX/ICON.png/LINK/TEXT) - button
+• (!hr) - horizontal line
+• (!hyperlink/LINK/TEXT) - make a text that open a link after clicking
+• (!img/image.png) - put image inside credits
+• (!gradient/#HEX1/#HEX2/TEXT) - gradient text from left to right
+-->
+
+<credits>
+  <page 
+  noImage="false" 
+  image="mod-credits/01c-kenti2x.png" 
+  title="Credit Page" 
+  text="New Icon Series team: (!line) (!button/#8f1e22/social_youtube.png/https://youtube.com/@justcyberboxer?si=E6b8VR0dHN_u08IM//Cyberboxer's Channel) (!line) (!button/#8f1e22/social_youtube.png/https://youtube.com/@warmhome-inc?si=T8Xd9kZh9wIKG4u3//Sdeshnij's Channel) (!line) (!button/#8f1e22/social_youtube.png/https://youtube.com/@incredimaks?si=vCj-cVmE_UjmLQkn//Maxusmarg's Channel) (!line) (!button/#8f1e22/social_youtube.png/https://youtube.com/@mishabring.official?si=eFdb8AquZEvhYL4u//Mishabring's Channel) (!line) (!button/#8f1e22/social_youtube.png/https://youtube.com/@wermyle?si=FD3MoE3K7jDi-UGV//Wermyle's Channel) (!line) (!line) (!line) Old content by RB-SERIES"/>
+  <page 
+  noImage="false"
+  image="mod-credits/02c-remmie@2x.png"
+  title="Special Thanks!"
+  text="Incredibox Modding Build created with passion by (!color/#64b1e8/(!bold/Rem))! Love creative mods and unique sounds? Support her work and explore more on her channel! (!line)(!line)(!hr)(!line) (!button/#8f1e22/social_youtube.png/https://www.youtube.com/@rin.Incredibox//Rem's Channel)"
+  />
+  <page 
+  noImage="false"
+  image="mod-credits/03c-sfsg@2x.png"
+  title="INCREDIBOX BY SO FAR SO GOOD!"
+  text="And of course the official developers of Incredibox, (!bold/Allan), (!bold/Romain) and Incredible (!bold/Polo)! Without them, this project wouldn't exist! (!line)(!line)(!hr)(!line)Buy Official Incredibox for more fun and to support the team!(!line)(!line)(!button/#4A4A4A/sfsg-credits-button.png/https://www.incredibox.com//Incredibox Website)(!button/#4A4A4A/sfsg-credits-button.png/https://www.incredibox.com/info/store/Buy Incredibox)"
+  />
+</credits>
+
+<!--You can edit or change my credits, but please remember to credit me somewhere as well for using my build! Thank you! ✨-->
