@@ -1,47 +1,44 @@
 #!/usr/bin/env python3
 """
-Serveur HTTP statique, prêt pour un déploiement sur Render.com.
+Serveur Flask servant des fichiers statiques (index.html + ressources),
+prêt pour un déploiement sur Render.com avec Gunicorn.
 
-- Écoute sur 0.0.0.0 (accessible depuis l'extérieur, pas juste en local)
-- Utilise le port fourni par Render via la variable d'environnement PORT
-- Sert les fichiers du dossier "src" (contenant index.html)
+Structure attendue (app.py au même niveau qu'index.html) :
 
-Structure attendue du dépôt déployé sur Render (app.py au même niveau qu'index.html) :
-
-    mon-projet/ (ou src/)
+    src/  (ou le nom de votre dépôt, peu importe)
     ├── app.py
+    ├── requirements.txt
     ├── index.html
     └── ... (css, js, images, etc.)
+
+Démarrage local (test) :
+    python app.py
+
+Démarrage en production (Render, via Gunicorn) :
+    gunicorn app:app
 """
 
-import http.server
-import socketserver
 import os
+from flask import Flask, send_from_directory
 
 # Dossier contenant index.html : le même dossier que ce script
 DOSSIER = os.path.dirname(os.path.abspath(__file__))
 
-# Render fournit le port à utiliser via la variable d'environnement PORT
-PORT = int(os.environ.get("PORT", 10000))
+app = Flask(__name__, static_folder=None)
 
 
-class Handler(http.server.SimpleHTTPRequestHandler):
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, directory=DOSSIER, **kwargs)
-
-    def log_message(self, format, *args):
-        # Logs visibles dans le dashboard Render
-        print("%s - %s" % (self.address_string(), format % args))
+@app.route("/")
+def index():
+    return send_from_directory(DOSSIER, "index.html")
 
 
-def main():
-    if not os.path.isdir(DOSSIER):
-        print(f"Attention : le dossier n'existe pas : {DOSSIER}")
-
-    with socketserver.ThreadingTCPServer(("0.0.0.0", PORT), Handler) as httpd:
-        print(f"Serveur démarré sur le port {PORT}, dossier servi : {DOSSIER}")
-        httpd.serve_forever()
+@app.route("/<path:chemin>")
+def fichiers_statiques(chemin):
+    return send_from_directory(DOSSIER, chemin)
 
 
 if __name__ == "__main__":
-    main()
+    # Utilisé uniquement pour tester en local.
+    # En production sur Render, c'est Gunicorn qui démarre l'app (voir Start Command).
+    port = int(os.environ.get("PORT", 10000))
+    app.run(host="0.0.0.0", port=port)
